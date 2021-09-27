@@ -31,15 +31,15 @@ Pass data from serial port into a Python data structure for further analysis
 
 ## Requirements
 ### Computational Requirements
-- Windows OS
-- Python
-- PySerial
+- Windows 10 OS
+- Python 3.9.6
+- PySerial 3.5
 - msvcrt (Windows-specific package)
 - time
-- tkinter
-- matplotlib
-- numpy
-- pandas
+- tkinter 8.6.10
+- matplotlib  3.4.2
+- numpy 1.20.3
+- pandas 1.3.2
 ### Connections and Adapters
 - USB-serial adapter
 
