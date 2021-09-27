@@ -45,10 +45,10 @@ Pass data from serial port into a Python data structure for further analysis
 
 ## [Installation Instructions]
 1. Install conda
-2. Download stc_environment.yml and serialToCSV.py
-3. Create the environment from stc_enviroment.yml fil
+2. Download stc_env.yml and serialToCSV.py
+3. Create the environment from stc_env.yml using
 ```
-conda env create -f stc_enviroment.yml
+conda env create -f stc_env.yml
 ```
 4. Make sure serialToCSV.py is in your current directory, where you'll run your script from
 
@@ -62,7 +62,7 @@ conda env create -f stc_enviroment.yml
 1. Open conda prompt.
 2. Activate environment using
 ```
-conda activate ser
+conda activate stc_env
 ```
 3. Run program using
 ```
