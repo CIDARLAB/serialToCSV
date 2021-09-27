@@ -3,12 +3,12 @@ Pass data from serial port into a Python data structure for further analysis
 
 ## Table of Contents
 1. [Features Summary](#features-summary)
-    1.1 [Parameters](#parameters)
-    1.2 [Functions](#functions
-    1.3 [Running Methods](#running-methods)
+   - 1.1 [Parameters](#parameters)
+   - 1.2 [Functions](#functions)
+   - 1.3 [Running Methods](#running-methods)
 2. [Requirements](#requirements)
-    2.1 [Computational Requirements](#computational-requirements)
-    2.2 [Connections and Adapters](#connections-and-adapters)
+   - 2.1 [Computational Requirements](#computational-requirements)
+   - 2.2 [Connections and Adapters](#connections-and-adapters)
 3. [Installation Instructions](#installation-instructions)
 4. [Finding Your Serial Port Number](#finding-your-serial-port-number)
 5. [Running the Program](#running-the-program)
