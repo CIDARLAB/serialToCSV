@@ -1,4 +1,4 @@
-# serialToPython
+# serialToCSV
 Pass data from serial port into a Python data structure for further analysis
 
 ## Table of Contents
@@ -26,11 +26,11 @@ Pass data from serial port into a Python data structure for further analysis
 - start data recording by pressing 's' key
 - stop data recording by pressing 'Enter'
 - option to record new data without reinitializing program
-### [Running Methods]
+### Running Methods
 - external python script
 
-## [Requirements]
-### [Computational Requirements]
+## Requirements
+### Computational Requirements
 - Windows OS
 - Python
 - PySerial
@@ -40,10 +40,10 @@ Pass data from serial port into a Python data structure for further analysis
 - matplotlib
 - numpy
 - pandas
-### [Connections and Adapters]
+### Connections and Adapters
 - USB-serial adapter
 
-## [Installation Instructions]
+## Installation Instructions
 1. Install conda
 2. Download stc_env.yml and serialToCSV.py
 3. Create the environment from stc_env.yml using
@@ -52,13 +52,13 @@ conda env create -f stc_env.yml
 ```
 4. Make sure serialToCSV.py is in your current directory, where you'll run your script from
 
-## [Finding Your Serial Port Number]
+## Finding Your Serial Port Number
 1. Open Device Manager on Windows 10 by searching for "Device Manager" on the search field in the taskbar.
 2. Click on "Ports (COM & LPT)" to expand the list of ports on your computer.
 3. Find "Arduino Uno" (or a name containing the name of the Arduino model you are using if not an Uno).
 4. The name of the port is in parenthesis next to "Arduino Uno."
 
-## [Running the program] 
+## Running the program
 1. Open conda prompt.
 2. Activate environment using
 ```
@@ -83,7 +83,7 @@ Data collection has terminated. Please select the filepath:
 7. After closing out of the plot, a pop-up window will appear.  Select the desired file name and location for the data set and press Enter.
 8. The data saved is in .csv format in the location designated in the previous step with the headers 'Time (s)' and 'Voltage (V)'.
 
-## [Acknowledgements]
+## Acknowledgements
 This code contains content from the following tutorials and forums:
 - 'Choosing a file in Python with simple Dialog', Stack Overflow
 - 'Python - Infinite while loop, break on user input', Stack Overflow
