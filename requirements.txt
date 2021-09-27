@@ -1,0 +1,9 @@
+Windows 10 OS
+python 3.9.6
+serial 3.5
+tkinter 8.6.10
+matplotlib 3.4.2
+numpy 1.20.3
+pandas 1.3.2
+msvcrt
+time
