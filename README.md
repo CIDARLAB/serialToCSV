@@ -11,8 +11,9 @@ Pass data from serial port into a Python data structure for further analysis
    - 2.2 [Connections and Adapters](#connections-and-adapters)
 3. [Installation Instructions](#installation-instructions)
 4. [Finding Your Serial Port Number](#finding-your-serial-port-number)
-5. [Running the Program](#running-the-program)
-6. [Acknowledgements](#acknowledgements)
+5. [Setting the Serial Port Number and Baudrate](#setting-the-serial-port-number-and-baudrate)
+6. [Running the Program](#running-the-program)
+7. [Acknowledgements](#acknowledgements)
 
 
 ## Features Summary
@@ -57,6 +58,14 @@ conda env create -f stc_env.yml
 2. Click on "Ports (COM & LPT)" to expand the list of ports on your computer.
 3. Find "Arduino Uno" (or a name containing the name of the Arduino model you are using if not an Uno).
 4. The name of the port is in parenthesis next to "Arduino Uno."
+
+## Setting the Serial Port Number and Baudrate
+The serial port number and baudrate are currently variables within serialToCSV.py with defines values.  Locate the below code block near the top of the file and change the port number and baudrate to suit your applications.  Save the script when finished with the changes.
+```
+# ***CHANGE VALUES FOR OWN APPLICATION***
+portID = 'COM9'
+baudRate = 9600
+```
 
 ## Running the program
 1. Open conda prompt.
