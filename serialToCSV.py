@@ -36,12 +36,15 @@ baudRate = 9600
 ser = serial.Serial(portID, baudRate, timeout=1)
 
 # prompt user to begin measurement
-strt = input("Press 's' to begin recording.  Press Enter to end and save: ")
+strt = input("Press 's' to begin recording.")
 
 if strt == 's':
-    print('Beginning collection from serial port...')
     while newRead:
         i = 0
+        ser.reset_input_buffer()
+        ser.reset_output_buffer()
+        print('Beginning collection from serial port...')
+        print('Press Enter to end and save.')
         while True:
             line = ser.readline()  # reads a single byte string
             string = line.decode()  # convert line to string
@@ -67,7 +70,6 @@ if strt == 's':
                     break
             time.sleep(0)
         # plot figure after collecting data
-        plt.figure()
         vltg.plot(x='Time (s)', y='Voltage (V)', xlabel='Time (s)', ylabel='Voltagw (V)')
         plt.show()
         # write DataFrame to CSV file
@@ -88,15 +90,22 @@ if strt == 's':
         cntn = input("Start a new recording? Press 'y' to record a new file or 'n' to terminate program: ")
         while contLoop:
             if cntn == 'y':
+                ser.reset_input_buffer()
+                ser.reset_output_buffer()
                 print("Taking a new recording...")
                 break
             elif cntn == 'n':
+                ser.reset_input_buffer()
+                ser.reset_output_buffer()
                 newRead = False
                 contLoop = False
                 print("Program ended by user.")
             else:
                 print("Invalid input. Please enter 'y' or 'n'.")
 
+ser.reset_input_buffer()
+ser.reset_output_buffer()
 ser.close()  # ***DO NOT REMOVE THIS LINE.*** Closes serial port.
 plt.close('all')
+
 
