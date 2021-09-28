@@ -1,5 +1,5 @@
 # serialToCSV
-Pass data from serial port into a Python data structure for further analysis
+Pass data from serial port into a Python data structure for further analysis.  The script expects to read one value from the serial port at a time.
 
 ## Table of Contents
 1. [Features Summary](#features-summary)
@@ -13,7 +13,8 @@ Pass data from serial port into a Python data structure for further analysis
 4. [Finding Your Serial Port Number](#finding-your-serial-port-number)
 5. [Setting the Serial Port Number and Baudrate](#setting-the-serial-port-number-and-baudrate)
 6. [Running the Program](#running-the-program)
-7. [Acknowledgements](#acknowledgements)
+7. [Known Issues and Temporary Fixes](#known-issues-and-temporary-fixes)
+8. [Acknowledgements](#acknowledgements)
 
 
 ## Features Summary
@@ -36,7 +37,6 @@ Pass data from serial port into a Python data structure for further analysis
 - Python 3.9.6
 - PySerial 3.5
 - msvcrt (Windows-specific package)
-- time
 - tkinter 8.6.10
 - matplotlib  3.4.2
 - numpy 1.20.3
@@ -79,11 +79,12 @@ python -m serialToCSV.py
 ```
 4. The following instructions will appear.  Press 's' to begin the recording.
 ```
-Press 's' to begin recording.  Press Enter to end and save:
+Press 's' to begin recording.  
 ```
 5. The following output will appear after the key press.  This indicates that the program is currently collecting data froom the serial port for conversion to .csv later.
 ```
 Beginning collection from serial port...
+Press Enter to end and save:
 ```
 6. To terminate data recording at any time, press the Enter key.  A plot of the data recorded will be displayed, and the following output will be displayed:
 ```
@@ -91,6 +92,31 @@ Data collection has terminated. Please select the filepath:
 ```
 7. After closing out of the plot, a pop-up window will appear.  Select the desired file name and location for the data set and press Enter.
 8. The data saved is in .csv format in the location designated in the previous step with the headers 'Time (s)' and 'Voltage (V)'.
+
+## Known Issues and Temporary Fixes
+1. Erroneous initial reading
+
+When developing the program, it was found that some values read by the Arduino at the beginning of initializing the script would at times cause the script to throw a value error and abort the program.  To prevent these erroneous values from interfering from ending the program prematurely, a piece of code shown below was designed to catch these values and reassign a dummy value of -5 to them.  It is unknown at this time what causes these erroneous values.
+```
+ if not string:
+    string = '-5'  # dummy value in case of erroneous value
+```
+When post-processing the `vltg` DataFrame within Python or the .csv file, take care to remove the -5 values.
+
+2. Error message when running script after compiling Arduino script
+
+conda may throw a value error (shown below) if the Python script is run in quick succession to an Arduino code compile.
+![alt text](https://github.com/CIDARLAB/serialToCSV/blob/main/errormsg.png?raw=true)
+Please wait for at least one minute after compiling to run the code in order to avoid this error.
+
+3. Values in .csv file do not display decimal places.
+
+This issue is currently being debugged.
+
+4. Buffer values from previous runs bleed into output of subsequent run
+
+It was observed during testing of the code that values cached in the buffer are read and stored in the .csv file of the following recording.  The commands `ser.reset_input_buffer()` and `ser.reset_output_buffer()` have been added at various locations of the code in an attempt to clear the cache.  This issue is currently being debugged.
+
 
 ## Acknowledgements
 This code contains content from the following tutorials and forums:
