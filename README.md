@@ -1,5 +1,5 @@
 # serialToCSV
-Pass data from serial port into a Python data structure for further analysis.  The script expects to read one value from the serial port at a time.
+Pass data from serial port into a Python data structure and .csv file for further analysis.  The script expects to read one value (voltage) from the serial port at a time and outputs a .csv file with two columns headed 'Time (s)' and 'Voltage (V)'.
 
 ## Table of Contents
 1. [Features Summary](#features-summary)
