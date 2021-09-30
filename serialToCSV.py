@@ -66,11 +66,13 @@ if strt == 's':
             # detect Enter key input.  End data recording if hit.
             if msvcrt.kbhit():
                 if msvcrt.getwche() == '\r':
+                    ser.reset_input_buffer()
+                    ser.reset_output_buffer()
                     ser.close()  # ***DO NOT REMOVE THIS LINE.*** Closes serial port.
                     break
             time.sleep(0)
         # plot figure after collecting data
-        vltg.plot(x='Time (s)', y='Voltage (V)', xlabel='Time (s)', ylabel='Voltagw (V)')
+        vltg.plot(x='Time (s)', y='Voltage (V)', xlabel='Time (s)', ylabel='Voltage (V)')
         plt.show()
         # write DataFrame to CSV file
         print('Data collection has terminated. Please select the filepath:')
@@ -98,9 +100,6 @@ if strt == 's':
                 print("Program ended by user.")
             else:
                 print("Invalid input. Please enter 'y' or 'n'.")
-
-ser.reset_input_buffer()
-ser.reset_output_buffer()
 plt.close('all')
 
 
