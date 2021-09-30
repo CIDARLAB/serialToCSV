@@ -109,14 +109,6 @@ conda may throw a value error (shown below) if the Python script is run in quick
 ![alt text](https://github.com/CIDARLAB/serialToCSV/blob/main/errormsg.png?raw=true)
 Please wait for at least one minute after compiling to run the code in order to avoid this error.
 
-3. Values in .csv file do not display decimal places.
-
-This issue is currently being debugged.
-
-4. Buffer values from previous runs bleed into output of subsequent run
-
-It was observed during testing of the code that values cached in the buffer are read and stored in the .csv file of the following recording.  The commands `ser.reset_input_buffer()` and `ser.reset_output_buffer()` have been added at various locations of the code in an attempt to clear the cache.  This issue is currently being debugged.
-
 
 ## Acknowledgements
 This code contains content from the following tutorials and forums:
