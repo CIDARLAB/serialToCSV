@@ -33,7 +33,7 @@ portID = 'COM9'
 baudRate = 9600
 
 # prompt user to begin measurement
-strt = input("Press 's' to begin recording.")
+strt = input("Press 's'+Enter to begin recording.")
 
 if strt == 's':
     while newRead:
@@ -89,7 +89,7 @@ if strt == 's':
         root.destroy()
         vltg.to_csv(filename, index=False, header=True)
         # check if user wants to take another recording
-        cntn = input("Start a new recording? Press 'y' to record a new file or 'n' to terminate program: ")
+        cntn = input("Start a new recording? Press 'y'+Enter to record a new file or 'n'+Enter to terminate program: ")
         while contLoop:
             if cntn == 'y':
                 print("Taking a new recording...")
