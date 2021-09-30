@@ -32,15 +32,14 @@ run = 1
 portID = 'COM9'
 baudRate = 9600
 
-# open serial port
-ser = serial.Serial(portID, baudRate, timeout=1)
-
 # prompt user to begin measurement
 strt = input("Press 's' to begin recording.")
 
 if strt == 's':
     while newRead:
         i = 0
+        # open serial port
+        ser = serial.Serial(portID, baudRate, timeout=1)
         ser.reset_input_buffer()
         ser.reset_output_buffer()
         print('Beginning collection from serial port...')
@@ -61,12 +60,13 @@ if strt == 's':
                 vltg = pd.DataFrame(data=dat)
             else:
                 elpstm = t - init
-                newData = np.array([(elpstm, string)], dtype=[("Time (s)", "float64"), ("Voltage (V)", "int64")])
+                newData = np.array([(elpstm, string)], dtype=[("Time (s)", "float64"), ("Voltage (V)", "float64")])
                 newDataFrame = pd.DataFrame(data=newData)
                 vltg = vltg.append(newDataFrame, ignore_index=True)  # store elapsed time and voltage into DataFrame
             # detect Enter key input.  End data recording if hit.
             if msvcrt.kbhit():
                 if msvcrt.getwche() == '\r':
+                    ser.close()  # ***DO NOT REMOVE THIS LINE.*** Closes serial port.
                     break
             time.sleep(0)
         # plot figure after collecting data
@@ -90,13 +90,9 @@ if strt == 's':
         cntn = input("Start a new recording? Press 'y' to record a new file or 'n' to terminate program: ")
         while contLoop:
             if cntn == 'y':
-                ser.reset_input_buffer()
-                ser.reset_output_buffer()
                 print("Taking a new recording...")
                 break
             elif cntn == 'n':
-                ser.reset_input_buffer()
-                ser.reset_output_buffer()
                 newRead = False
                 contLoop = False
                 print("Program ended by user.")
@@ -105,7 +101,6 @@ if strt == 's':
 
 ser.reset_input_buffer()
 ser.reset_output_buffer()
-ser.close()  # ***DO NOT REMOVE THIS LINE.*** Closes serial port.
 plt.close('all')
 
 
